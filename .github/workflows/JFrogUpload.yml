@@ -1,0 +1,40 @@
+name: JFrogUploadArtifact3
+
+on: workflow_dispatch
+
+jobs:
+  upload_to_jfrog:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: "/home/runner/work/jenkins-test/jenkins-test"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        with:
+          version: latest
+        env:
+          JF_URL: "https://appdevopskiran.jfrog.io"
+          JF_USER: "admin"
+          JF_PASSWORD: "Testing1!"
+    
+      - name: Run JFrog CLI Ping
+        run: |
+          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+          jf rt ping 
+          jf --version
+          jf rt u "README.md" "local_repo"
+          # Collect environment variables for the build
+          #jf rt bce
+          # Collect VCS details from git and add them to the build
+          #jf rt bag
+          jf rt bp --dry-run 
+          jf rt bp --dry-run  > jfrog_build_info.json
+          jf rt bce
+          # Publish build info
+          jf rt bp
