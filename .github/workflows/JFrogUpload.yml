@@ -6,9 +6,9 @@ jobs:
   upload_to_jfrog:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: "/home/runner/work/jenkins-test/jenkins-test"
+    # defaults:
+    #   run:
+    #     working-directory: "/home/runner/work/jenkins-test/jenkins-test"
 
     steps:
       - name: Checkout code
