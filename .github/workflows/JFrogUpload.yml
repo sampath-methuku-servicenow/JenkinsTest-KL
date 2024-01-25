@@ -24,8 +24,10 @@ jobs:
           JF_PASSWORD: "Testing1!"
     
       - name: Run JFrog CLI Ping
+        env:
+          JFROG_CLI_HOME: ${{ github.workspace }}/jfrog-cli
         run: |
-          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+          # export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
           jf rt ping 
           jf --version
           jf rt u "README.md" "local_repo"
