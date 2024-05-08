@@ -17,7 +17,7 @@ jobs:
       - name: Set up JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         with:
-          version: latest
+          version: v3.5.3
         env:
           JF_URL: "https://devopsjfrog3.jfrog.io/"
           JF_USER: "devops"
