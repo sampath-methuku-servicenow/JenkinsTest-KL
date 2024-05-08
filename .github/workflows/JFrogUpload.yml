@@ -19,9 +19,9 @@ jobs:
         with:
           version: latest
         env:
-          JF_URL: "https://devopskiran002.jfrog.io"
-          JF_USER: "admin"
-          JF_PASSWORD: "Testing1!"
+          JF_URL: "https://devopsjfrog3.jfrog.io"
+          JF_USER: "devops"
+          JF_PASSWORD: "DevOps1!"
     
       - name: Run JFrog CLI Ping
         env:
@@ -30,7 +30,7 @@ jobs:
           # export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
           jf rt ping 
           jf --version
-          jf rt u "README.md" "local_repo_github"
+          jf rt u "README.md" "local_repo"
           # Collect environment variables for the build
           #jf rt bce
           # Collect VCS details from git and add them to the build
